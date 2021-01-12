@@ -1,0 +1,47 @@
+{
+  "name": "DataServiceFinalProject",
+  "description": "Blank Process",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.DataService.Activities": "[20.8.1-preview]",
+    "UiPath.Excel.Activities": "[2.9.1-preview]",
+    "UiPath.Mail.Activities": "[1.9.1-preview]",
+    "UiPath.PDF.Activities": "[3.2.2]",
+    "UiPath.System.Activities": "[20.8.0-preview]",
+    "UiPath.UIAutomation.Activities": "[20.8.0-preview]"
+  },
+  "webServices": [],
+  "entitiesStores": [
+    {
+      "serviceDocument": ".entities/EntitiesStore.json",
+      "tenantName": "1affc909-1a6a-4abf-87cf-a8eda86c6234",
+      "namespace": "DataServiceFinalProject",
+      "uniqueReference": "ZJDGYLCuXZ1FqoIyfM90mOJxWa79zXanRXuwS9ePz0U="
+    }
+  ],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.8.0.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfoCollection": []
+  },
+  "expressionLanguage": "VisualBasic",
+  "isTemplate": false
+}

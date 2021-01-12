@@ -1,0 +1,212 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadPDFInvoices" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:d="clr-namespace:DataServiceFinalProject;assembly=DataService.DataServiceFinalProject" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_invoicePathList" Type="InArgument(s:String[])" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>824,2675.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ReadPDFInvoices_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="27">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>DataServiceFinalProject</x:String>
+      <x:String>UiPath.DataService.Definition</x:String>
+      <x:String>UiPath.DataService.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>DataService.DataServiceFinalProject</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Create Invoice Records" sap:VirtualizedContainerService.HintSize="768,2510" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="d:Clients" Name="client" />
+      <Variable x:TypeArguments="d:Invoices" Name="invoice" />
+      <Variable x:TypeArguments="d:InvoiceLineItems" Name="invoiceLineItem" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="726,93.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Starting invoice record creation&quot;]" />
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="726,2153.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_invoicePathList]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="file" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="690,2018.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="fileContent" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Default="[new Dictionary(Of String, Object)]" Name="invoiceData" />
+              <Variable x:TypeArguments="scg:IList(d:Invoices)" Name="invoiceRecords" />
+              <Variable x:TypeArguments="scg:IList(d:Clients)" Name="clientRecords" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ExtractValues workflow" sap:VirtualizedContainerService.HintSize="648,113.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExtractValues.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_file">[file.ToString]</InArgument>
+                <OutArgument x:TypeArguments="d:Clients" x:Key="out_Client">[client]</OutArgument>
+                <OutArgument x:TypeArguments="d:Invoices" x:Key="out_Invoice">[invoice]</OutArgument>
+                <OutArgument x:TypeArguments="d:InvoiceLineItems" x:Key="out_InvoiceLineItem">[invoiceLineItem]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <uda:QueryEntityRecords x:TypeArguments="d:Clients" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records for Client Duplicates" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="648,225.6" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" OutputRecords="[clientRecords]" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+              <uda:QueryEntityRecords.FilterArguments>
+                <uda:FilterArgument FilterActivityType="d:Clients">
+                  <uda:FilterArgument.Filter>
+                    <uda:GroupFilter Operator="and">
+                      <uda:GroupFilter.Filters>
+                        <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                          <uda:SimpleFilter FieldName="Name" FieldType="System.String" Operator="=">
+                            <uda:SimpleFilter.ExpressionValue>
+                              <InArgument x:TypeArguments="x:String">[Client.Name]</InArgument>
+                            </uda:SimpleFilter.ExpressionValue>
+                          </uda:SimpleFilter>
+                        </scg:List>
+                      </uda:GroupFilter.Filters>
+                      <uda:GroupFilter.Groups>
+                        <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                      </uda:GroupFilter.Groups>
+                    </uda:GroupFilter>
+                  </uda:FilterArgument.Filter>
+                </uda:FilterArgument>
+              </uda:QueryEntityRecords.FilterArguments>
+            </uda:QueryEntityRecords>
+            <If Condition="[clientRecords.Count &lt; 1]" DisplayName="If Non-duplicate client record" sap:VirtualizedContainerService.HintSize="648,374.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <uda:CreateEntityRecord x:TypeArguments="d:Clients" ContinueOnError="False" DisplayName="Create Entity Record" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="340.8,224.8" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_1" InputEntity="[client]" OutputEntity="[client]" TimeoutInMs="30000" />
+              </If.Then>
+              <If.Else>
+                <Assign sap:VirtualizedContainerService.HintSize="262.4,59.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="d:Clients">[client]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="d:Clients">[clientRecords.First]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="648,59.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="d:Clients">[invoice.Company]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="d:Clients">[client]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uda:QueryEntityRecords x:TypeArguments="d:Invoices" TotalRecords="{x:Null}" ContinueOnError="False" DisplayName="Query Entity Records for Invoice Duplicates" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="648,225.6" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_2" OutputRecords="[invoiceRecords]" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
+              <uda:QueryEntityRecords.FilterArguments>
+                <uda:FilterArgument FilterActivityType="d:Invoices">
+                  <uda:FilterArgument.Filter>
+                    <uda:GroupFilter Operator="and">
+                      <uda:GroupFilter.Filters>
+                        <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
+                          <uda:SimpleFilter FieldName="InvoiceNumber" FieldType="System.String" Operator="=">
+                            <uda:SimpleFilter.ExpressionValue>
+                              <InArgument x:TypeArguments="x:String">[Invoice.InvoiceNumber]</InArgument>
+                            </uda:SimpleFilter.ExpressionValue>
+                          </uda:SimpleFilter>
+                        </scg:List>
+                      </uda:GroupFilter.Filters>
+                      <uda:GroupFilter.Groups>
+                        <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
+                      </uda:GroupFilter.Groups>
+                    </uda:GroupFilter>
+                  </uda:FilterArgument.Filter>
+                </uda:FilterArgument>
+              </uda:QueryEntityRecords.FilterArguments>
+            </uda:QueryEntityRecords>
+            <If Condition="[invoiceRecords.Count &lt; 1]" DisplayName="If Non-duplicate Invoice record" sap:VirtualizedContainerService.HintSize="648,368" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <uda:CreateEntityRecord x:TypeArguments="d:Invoices" ContinueOnError="False" DisplayName="Create Entity Record" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="341,220" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_2" InputEntity="[invoice]" OutputEntity="[invoice]" TimeoutInMs="30000" />
+              </If.Then>
+              <If.Else>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="d:Invoices">[invoice]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="d:Invoices">[invoiceRecords.First]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="648,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="d:Invoices">[invoiceLineItem.InvoiceNumber]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="d:Invoices">[invoice]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uda:CreateEntityRecord x:TypeArguments="d:InvoiceLineItems" ContinueOnError="False" DisplayName="Create Entity Record - Invoice Line Items" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="648,220" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_3" InputEntity="[invoiceLineItem]" OutputEntity="[invoiceLineItem]" TimeoutInMs="30000" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="726,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Invoice record creation complete&quot;]" />
+  </Sequence>
+</Activity>
